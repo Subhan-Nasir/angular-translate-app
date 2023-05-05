@@ -86,7 +86,7 @@ export class AppComponent implements OnInit {
 
         // this.inputLanguage = this.defaultInputLanguage.isoCode;
         // this.outputLanguage = this.de;
-     
+        this.languages.sort((a, b) => (a.name! > b.name! ) ? 1 : -1);
 
       }
     );

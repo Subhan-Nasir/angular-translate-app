@@ -14,12 +14,12 @@
                 <h1>From:</h1>
 
                 <select formControlName="inputLang" [(ngModel)]="inputLanguage">
-                    <option *ngFor="let lang of languages" value="{{lang.isoCode}}">{{lang.isoCode?.toUpperCase()}} - {{lang.name}}</option>
+                    <option *ngFor="let lang of languages" value="{{lang.isoCode}}">{{lang.name}}</option>
                 </select>
             </div>
 
             <button class="swap-lang-button" (click)="switchLanguages()" [ngClass]="{flipped:buttonFlipped}">
-                <!-- <img src="../assets/swap-icon.svg" alt="Swap icon"> -->
+
 
                 <svg 
                     viewBox="-1.6 -1.6 19.20 19.20"
@@ -40,7 +40,7 @@
             <div class="to-lang-heading">
                 <h1>To:</h1>
                 <select formControlName="outputLang" [(ngModel)]="outputLanguage">
-                    <option *ngFor="let lang of languages" value="{{lang.isoCode}}">{{lang.isoCode?.toUpperCase()}} - {{lang.name}}</option>
+                    <option *ngFor="let lang of languages" value="{{lang.isoCode}}">{{lang.name}}</option>
                 </select>
             </div>
 
@@ -50,12 +50,6 @@
         <div class="form-content">
             <div class="input-text">
 
-                <!-- AAAAAAAAAAAAAAAAAA
-                AAAAAAAAAAAAAAAAAA
-                AAAAAAAAAAAAAAAAAA
-                AAAAAAAAAAAAAAAAAA
-                AAAAAAAAAAAAAAAAAA -->
-
                 <textarea multiline="false" name="" id="" formControlName="inputString" [(ngModel)]="inputText"></textarea>
                 
             </div>
@@ -63,12 +57,7 @@
             <div class="translated-text">
                 <p>
                     {{translatedText}}
-                    <!-- BBBBBBBBBBBBBBBBBBBBBBBBBB
-                    BBBBBBBBBBBBBBBBBBBBBBBBBB
-                    BBBBBBBBBBBBBBBBBBBBBBBBBB
-                    BBBBBBBBBBBBBBBBBBBBBBBBBB
-                    BBBBBBBBBBBBBBBBBBBBBBBBBB
-                    BBBBBBBBBBBBBBBBBBBBBBBBBB -->
+
                 </p>
             </div>
             <!-- <button class="submit-button" type="submit">Translate</button>         -->
