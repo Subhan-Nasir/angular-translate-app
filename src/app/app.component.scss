@@ -1,0 +1,264 @@
+@import '../styles.scss';
+
+*{
+    --font-family: 'Fira Sans', sans-serif;
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semi-bold: 500;
+    --fw-bold: 700;
+
+
+
+
+    // --primary: #20063b;
+    // --secondary: #dce0d9;
+    // --highlight: darkblue;
+
+    --primary: #003049;
+    --secondary: #bbc9bb;
+
+    
+
+    --highlight: darkblue;
+    --white: white;
+    --black: black;
+
+
+
+
+    --navbar-bg: var(--primary);
+    --navbar-text-colour: white;
+
+
+    --container-bg: white;
+
+
+    --form-bg: rgb(213, 218, 218); 
+    --form-heading-colour: var(--white);
+
+
+    --dropdown-colour: var(--white);
+ 
+
+    --button-bg: var(--highlight);
+    --button-text-colour: var(--white);
+
+
+    font-family: var(--font-family);
+    font-weight: var(--fw-light);
+}
+
+
+nav {
+    background-color: var(--navbar-bg);
+    width: 100vw;
+}
+
+nav > *{
+    font-size: 2rem;
+    font-weight: var(--fw-regular);
+    color: var(--navbar-text-colour);
+    width: 100%;
+
+}
+
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10vh auto;
+
+    
+    
+    
+}
+
+
+// form{
+
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     align-items: center;
+//     gap: 0rem;
+
+//     background-color: red;
+//     background-color: transparent;
+
+//     // box-shadow: 14px 18px 42px 1px rgba(0, 0, 0, 0.443);
+
+// }
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    max-width: 700px;
+    
+    font-family: var(--font-family);
+    font-weight: var(--fw-light);
+    
+    box-shadow: 27px 25px 47px 11px rgba(0, 0, 0, 0.181);
+    border-radius: 2rem;
+
+}
+
+
+h1{
+    font-size: 1.5rem;
+    font-weight: var(--fw-regular);
+}
+
+.form-headings{
+
+    display: grid;
+    grid-template-columns: 100fr 1fr 100fr;
+
+    gap: 0;
+    
+    align-items: center;
+
+    
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 1rem;
+
+   
+    min-width: 700px;
+}
+
+.from-lang-heading, .to-lang-heading{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.from-lang-heading > select, .to-lang-heading > select{
+    margin: 1rem;
+    padding: 0.25rem 1rem;
+
+    
+    background-color: transparent;
+    color: var(--white);
+    outline: 1px solid var(--white);
+}
+
+
+
+.swap-lang-button{
+    --rotation: 0deg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 2.5rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    padding: 7px;
+
+    border: none;
+
+    background-color: var(--white);
+    color: var(--black);
+    transform: rotate(var(--rotation));
+    transition: transform 250ms ease-in;
+}
+
+.swap-lang-button svg path{
+    fill: currentColor;
+}
+
+.swap-lang-button:hover, .swap-lang-button:focus{
+    background-color: var(--white);
+    color: var(--black);
+
+    outline: 2px solid var(--white);
+    outline-offset: 2px;
+    
+}
+
+.swap-lang-button:active{
+    background-color: var(--primary);
+    color: var(--white);
+    --rotation: 180deg;
+}
+
+.form-content{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    background-color: white;
+    flex-wrap: wrap;
+    width: 100%;
+
+
+    
+}
+
+.input-text{
+    
+
+    display: flex;
+    align-items: center;
+
+}
+
+.translated-text{
+    background-color: var(--white);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    border: none;
+
+    padding: 1rem;
+    outline: 1px solid lightgrey;
+    color: #626262;
+
+}
+.submit-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    grid-column: 1/-1;
+    margin: 0.5rem 15rem;
+    
+    background-color: var(--secondary);
+    color: var(--black);
+    border: none;
+    border-radius: 4rem;
+    padding: 0.5rem
+
+}
+
+.submit-button:hover, .submit-button:focus{
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.submit-button:active{
+    background-color: black;
+}
+
+
+textarea{
+    width: 100%;
+    min-height: 250px;
+
+    border: none;
+    padding: 1rem;
+    outline: 1px solid lightgrey;
+}
+
