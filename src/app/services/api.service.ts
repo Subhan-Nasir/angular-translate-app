@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { transition } from '@angular/animations';
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,22 +19,6 @@ export class ApiService {
 
 
     let url = environment.base_url + "/translate";
-
-    // params = new HttpParams {
-    //   'to[0]': outputLanguage,
-    //   from: inputLanguage,
-
-    //   'api-version': '3.0',
-    //   profanityAction: 'Marked',
-    //   textType: 'plain'
-    // };
-
-    // let headers = {
-    //   'content-type': 'application/json',
-    //   'X-RapidAPI-Key': environment.X_RapidAPI_Key,
-    //   'X-RapidAPI-Host': environment.X_RapidAPI_Host
-    // };
-
 
     let _params = new HttpParams()
       .set('to[0]', outputLanguage)
@@ -66,6 +54,35 @@ export class ApiService {
 
 
     return this.http.post(url,data, {headers: _headers, params: _params});
+
+  }
+
+  getLanguages(){
+
+    console.log("GET LANGUAGES CALLED");
+
+    // let url = "https://microsoft-translator-text.p.rapidapi.com/languages";
+
+    // let _params = new HttpParams()
+    // .set('api-version', '3.0')
+    // .set('scope', 'translation');
+
+    // let _headers = new HttpHeaders()
+    // .set('Accept-Language', 'en')
+    // .set('X-RapidAPI-Key', environment.X_RapidAPI_Key,)
+    // .set('X-RapidAPI-Host', environment.X_RapidAPI_Host)
+
+
+    // return this.http.get(url,{ headers:_headers, params: _params, responseType:"text"});
+
+
+
+
+
+    return this.http.get("https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation");
+
+
+
 
   }
 

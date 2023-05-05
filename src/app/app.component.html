@@ -14,7 +14,7 @@
                 <h1>From:</h1>
 
                 <select formControlName="inputLang" [(ngModel)]="inputLanguage">
-                    <option *ngFor="let lang of languages" value="{{lang.iso}}">{{lang.name}}</option>
+                    <option *ngFor="let lang of languages" value="{{lang.isoCode}}">{{lang.isoCode?.toUpperCase()}} - {{lang.name}}</option>
                 </select>
             </div>
 
@@ -40,7 +40,7 @@
             <div class="to-lang-heading">
                 <h1>To:</h1>
                 <select formControlName="outputLang" [(ngModel)]="outputLanguage">
-                    <option *ngFor="let lang of languages" value="{{lang.iso}}">{{lang.name}}</option>
+                    <option *ngFor="let lang of languages" value="{{lang.isoCode}}">{{lang.isoCode?.toUpperCase()}} - {{lang.name}}</option>
                 </select>
             </div>
 

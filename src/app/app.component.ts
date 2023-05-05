@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from './services/api.service';
 import { Observable, debounceTime } from 'rxjs';
+import { Language } from './models/language.model';
 
 @Component({
   selector: 'app-root',
@@ -14,16 +15,32 @@ export class AppComponent implements OnInit {
   inputText: string | null | undefined = "";
   translatedText: string | null | undefined = "";
 
-  languages = [
-    {iso:"en", name:"English"}, 
-    {iso:"es", name:"Spanish"},
-    {iso:"fr", name:"French"},
-    {iso:"it", name:"Italian"},
-  ];
+  // languages = [
+  //   // {iso:"en", name:"English"}, 
+  //   // {iso:"es", name:"Spanish"},
+  //   // {iso:"fr", name:"French"},
+  //   // {iso:"it", name:"Italian"},
+  // ];
 
 
-  inputLanguage:string | null | undefined= this.languages[0].iso;
-  outputLanguage:string | null | undefined = this.languages[1].iso;
+  defaultInputLanguage: Language = {
+    name:"English",
+    isoCode:"en",
+    nativeName:"English",
+    dir: "ltr"
+  };
+
+  defaultOutputLanguage: Language = {
+    name: "Spanish",
+    isoCode: "es",
+    nativeName: "Español",
+    dir: "ltr"
+  }
+
+  languages: Language[] = [];
+
+  inputLanguage:string | null | undefined = this.defaultInputLanguage.isoCode;
+  outputLanguage:string | null | undefined = this.defaultOutputLanguage.isoCode;
 
   buttonFlipped: boolean = false;
 
@@ -41,6 +58,38 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.translationForm.valueChanges.pipe(debounceTime(350)).subscribe(()=>this.formSubmit());
+
+    this.apiService.getLanguages().subscribe(
+      (res:any) => {
+        console.log("SUPPORTED LANGUAGES");
+        console.log(res);
+        let isoCodes = Object.keys(res["translation"]);
+        isoCodes.forEach(isoCode => {
+          let name = res["translation"][isoCode]["name"].replace(" ","");
+          let nativeName = res["translation"][isoCode]["nativeName"];
+          let dir = res["translation"][isoCode]["dir"];
+          let newLang: Language = {
+            name: name,
+            nativeName: nativeName,
+            dir: dir,
+            isoCode: isoCode
+          }
+
+          // if(isoCode !== this.defaultInputLanguage.isoCode && isoCode !== this.defaultOutputLanguage.isoCode){
+          //   this.languages.push(newLang);
+          // }
+
+          this.languages.push(newLang);
+          
+          
+        });
+
+        // this.inputLanguage = this.defaultInputLanguage.isoCode;
+        // this.outputLanguage = this.de;
+     
+
+      }
+    );
     
   }
 
@@ -55,7 +104,7 @@ export class AppComponent implements OnInit {
     
     this.apiService.getTranslatedText(this.inputLanguage!, this.outputLanguage!, this.inputText!).subscribe(
       (res: any) => {
-        console.log(res)
+        console.log(res);
         this.translatedText = res['0']['translations'][0].text;
       }
     );
