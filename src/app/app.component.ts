@@ -25,6 +25,8 @@ export class AppComponent implements OnInit {
   inputLanguage:string | null | undefined= this.languages[0].iso;
   outputLanguage:string | null | undefined = this.languages[1].iso;
 
+  buttonFlipped: boolean = false;
+
 
 
   constructor(public apiService: ApiService){
@@ -62,6 +64,9 @@ export class AppComponent implements OnInit {
   switchLanguages(){
 
     console.log("SWITCHING LANGUAGES");
+
+    this.buttonFlipped = !this.buttonFlipped;
+
     let oldInputLanguage = this.translationForm.value.inputLang;
     let oldOutputLanguage = this.translationForm.value.outputLang;
 
@@ -79,6 +84,8 @@ export class AppComponent implements OnInit {
     this.translatedText = oldInputText;
 
   }
+
+
 
 
 }

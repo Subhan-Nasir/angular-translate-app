@@ -3,6 +3,7 @@
 </nav>
 
 
+
 <div class="wrapper">
 
     <form [formGroup]="translationForm" (ngSubmit)="formSubmit()">
@@ -17,7 +18,7 @@
                 </select>
             </div>
 
-            <button class="swap-lang-button" (click)="switchLanguages()">
+            <button class="swap-lang-button" (click)="switchLanguages()" [ngClass]="{flipped:buttonFlipped}">
                 <!-- <img src="../assets/swap-icon.svg" alt="Swap icon"> -->
 
                 <svg 
@@ -77,5 +78,6 @@
 
 
 </div>
+
 
 <router-outlet></router-outlet>
